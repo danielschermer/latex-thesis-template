@@ -1,0 +1,31 @@
+% Useful Regex
+% Replace (\ref{$1}) by \eqref{$1}
+% \(\\ref\{(.+?)\}\) -> \eqref{$1}
+% Search for Abbreviations
+% \([A-Z0-9]{n}\)
+
+%%% Custom Abstract Environment%%%
+%   Reduce the margin of the summary:
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+%   Generate the environment for the abstract:
+\newcommand\summaryname{Abstract}
+\newenvironment{Abstract}%
+{\begin{changemargin}{1em}{1em}\small\begin{center}%
+            \bfseries\sffamily{\summaryname}\end{center}}%
+        {\end{changemargin}}
+
+%%% COUNTERS %%%
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+%%% Abbreviations %%%
+\newcommand{\eg}{e.\,g.}
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\Eg}{E.\,g.}
+\newcommand{\Wrt}{W.\,r.\,t.}
+\newcommand{\wrt}{w.\,r.\,t.}
+
+% LTeX: enabled=true

@@ -1,0 +1,12 @@
+% Dynamically adjust indentation
+\DeclareTOCStyleEntry[dynnumwidth=true]{tocline}{figure}
+\DeclareTOCStyleEntry[dynnumwidth=true]{tocline}{table}
+% Captions
+\KOMAoption{captions}{figuresignature, tableheading}
+\addtokomafont{caption}{\small}
+\addtokomafont{captionlabel}{\small\sffamily\bfseries}
+\setcapindent{0em}
+%\setcapmargin{1em}
+% Sectioning
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}

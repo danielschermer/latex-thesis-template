@@ -1,0 +1,102 @@
+% LTeX: enabled=false
+%%% PACKAGES %%%
+\usepackage{algorithm}
+\counterwithin{algorithm}{chapter}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage[pdfauthor={Daniel Schermer},
+  pdftitle={Title},
+  pdfsubject={PhD Thesis},
+]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+%%% LAYOUT %%%
+\usepackage{scrhack}
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\usepackage[]{setspace}
+\allowdisplaybreaks
+\onehalfspacing
+\recalctypearea
+% Package typearea Info: These are the values describing the layout:
+% (typearea)             DIV  = 12
+% (typearea)             BCOR = 28.45274pt
+% (typearea)             \paperwidth      = 597.50793pt
+% (typearea)              \textwidth      = 426.7914pt
+% (typearea)              DIV departure   = -8%
+% (typearea)              \evensidemargin = 22.57254pt
+% (typearea)              \oddsidemargin  = 3.60402pt
+% (typearea)             \paperheight     = 845.04694pt
+% (typearea)              \textheight     = 602.43304pt
+% (typearea)              \topmargin      = -1.84941pt
+% (typearea)              \headheight     = 20.53586pt
+% (typearea)              \headsep        = 24.64304pt
+% (typearea)              \topskip        = 11.0pt
+% (typearea)              \footskip       = 57.50041pt
+% (typearea)              \baselineskip   = 16.4287pt
+% (typearea)              on input line 55.
+
+% Centered Document (digital print)
+% \renewcommand{\evensidemargin}{13.08828pt}
+% \renewcommand{\oddsidemargin}{13.08828pt}
+
+%%% GLOSSARY %%%
+\usepackage[automake,toc=true,nopostdot=true,nonumberlist,nogroupskip]{glossaries-extra}
+\glsdisablehyper
+\makeglossaries
+\GlsXtrEnablePreLocationTag{(Page }{(Pages }
+\renewcommand{\GlsXtrFormatLocationList}[1]{#1)}
+% Reset the appearance in each chapter
+\preto\chapter{\glsresetall}
+%\setabbreviationstyle{long-short}
+% We want the first appearance to be italic
+\renewcommand{\glsfirstlongdefaultfont}[1]{\emph{#1}}
+
+% In principle it would be nice to only use abbreviations if they are used more than once:
+% \GlsXtrEnableEntryCounting{abbreviation}{1} %However, this conflicts with \preto\chapter{\glsresetall}!
+
+% Helpful Regex to replace hand-made abbreviations
+% \bTSP\b(?!-|\})
+% \\textit\{.*\} \(DASP\)
+
+% LTeX: enabled=true
+\newabbreviation{TSP}{TSP}{Traveling Salesman Problem}
+
+%%% BIBLIOGRAPHY %%%
+\usepackage[sortcites,
+  sorting=nyt,
+  backend=biber,
+  natbib=true,
+  isbn=false,
+  style=authoryear,
+  refsegment=chapter,
+  dashed=false, % show full name for repeating authors
+  url=false,
+  doi=false,
+  isbn=false,
+  maxcitenames=2, % abbreviate more than 2 authors by et. al.
+  uniquelist=false % force the above
+]{biblatex}
+
+% Clean up the .bib file
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=urldate, null]
+      \step[fieldset=doi, null]
+      \step[fieldset=url, null]
+      \step[fieldset=issn, null]
+      \step[fieldset=month, null]
+      \step[fieldset=arxivId, null]
+      \step[fieldset=note, null]
+      \step[fieldset=language, null]
+    }
+  }
+}
+\addbibresource{bibliography.bib}
+%\tikzsetexternalprefix{tikztmp/}
+%\tikzexternalize

@@ -1,0 +1,134 @@
+% LTeX: enabled=false
+\documentclass[paper=A4,
+BCOR=10mm, % Binding CORrection. Rule of Thumb: (printed pages * page thickness) / 2.
+DIV=12, % Default: 10pt(8), 11pt(10), 12pt(12)
+fontsize=11pt,
+twoside=true,
+%overfullrule,
+open=right,
+headsepline, % footsepline
+listof=totoc,
+headings=normal, % Size of headings
+footinclude=false, % Include footer in the calculation of the type area
+headinclude=true % Include header in the calculation of the type area (should be true if a headsepline is used)
+]{scrbook}
+
+% For digital print (centered with twoside=false and consistent empty pages)
+% \let\oldchapter\chapter
+% \renewcommand{\chapter}{%
+%   \clearpage% Move to next page
+%   \ifodd\value{page}\else% If this page is not odd/even...
+%   \mbox{}\thispagestyle{empty}\clearpage% ...insert a blank page and move to next page
+%   \fi
+%   \oldchapter
+% }
+
+
+% KOMA-specific options
+\input{input/koma.tex}
+% Load all required packages
+\input{input/packages.tex}
+% Miscellaneous environments & commands
+\input{input/misc.tex}
+
+\usepackage{blindtext}
+\usepackage{lipsum}
+
+\begin{document}
+\titlehead{\input{input/rptu-logo.tex}}
+% LTeX: enabled=true
+\title{Title}
+
+% \subtitle{Vom Fachbereich Wirtschaftswissenschaften der\\
+% RPTU in Kaiserslautern\\
+%  zur Verleihung des akademischen Grades Doctor rerum politicarum (Dr.\ rer.\ pol.) genehmigte}
+\author{\textsc{Dissertation}\\
+  zur Erlangung des Grades\\
+  \glqq Doctor rerum politicarum\grqq\\
+  \normalsize (Dr.~rer.~pol.)\\[2em]
+  der Rheinland-Pfälzischen Technischen Universität\\
+  Kaiserslautern-Landau \\
+  \normalsize im Fachbereich\\
+  Wirtschaftswissenschaften\\[4em]
+  \normalsize vorgelegt von\\
+  \textit{Daniel Schermer}
+}
+\date{Kaiserslautern, Dezember 2023}
+% \publishers{
+% \normalsize
+% \begin{center}
+% \begin{tabular}{ l l }
+% Tag der wissenschaftlichen Aussprache: & 01.\ April 2022   \\
+% Dekan                                  & Prof.~Dr.~Foo Bar \\
+% Vorsitzender der Prüfungskommision:    & Prof.~Dr.~Foo Bar \\
+% Erster Berichterstatter:               & Prof.~Dr.~Foo Bar \\
+% Zweiter Berichterstatter:              & Prof.~Dr.~Foo Bar
+% \end{tabular}
+% \end{center}
+% }
+\uppertitleback{}
+\lowertitleback{}
+\dedication{404 not found}
+
+% Title and index
+\frontmatter
+\maketitle
+\tableofcontents
+\printglossary[type=main,title={List of Abbreviations}]
+\listofalgorithms\addcontentsline{toc}{chapter}{List of Algorithms}
+\listoffigures
+\listoftables
+
+\mainmatter
+\chapter{Background, Organization, and Contribution}
+\section{Background}
+\gls{TSP}
+\lipsum[5]
+\section{Organization and Contribution}
+\lipsum[5] \citep{texbook}
+\begin{figure}[htb]
+  \includegraphics[width=.5\textwidth]{example-image-a}\hfill
+  \includegraphics[width=.5\textwidth]{example-image-b}
+  \caption[A short caption in the TOC.]{A figure with a very long and verbose caption.}
+\end{figure}
+\lipsum[5]
+
+\sloppy
+% Print the bibliography for the current chapter
+\printbibliography[segment=\therefsegment,heading=subbibnumbered]
+\fussy
+
+\chapter{Title of Paper X}
+\begin{Abstract}
+  \lipsum[5]
+\end{Abstract}
+\section{Introduction}
+\lipsum[5]\citep{latex2e}
+
+\sloppy
+% Print the bibliography for the current chapter
+\printbibliography[segment=\therefsegment,heading=subbibnumbered]
+\fussy
+
+\chapter{Summary, Conclusion, and Outlook}
+\section{Summary and Conclusion}
+\glspl{TSP}
+\lipsum[2]\citep{knuth:1984}
+\section{Outlook}
+\begin{table}[htb]
+  \centering
+  \includegraphics[width=.5\textwidth]{example-image-c}
+  \caption[A short caption in the TOC.]{A table with a very long and verbose caption.}
+\end{table}
+
+\sloppy
+% Print the bibliography for the current chapter
+\printbibliography[segment=\therefsegment,heading=subbibnumbered]
+\fussy
+
+\sloppy
+% Print the entire bibliography
+\printbibliography[heading=bibnumbered]
+\fussy
+
+\end{document}
