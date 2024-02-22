@@ -1,4 +1,4 @@
-# $\LaTeX$ Thesis Template
+# Latex Thesis Template
 This is the $\LaTeX$ template which I used for writing my cumulative PhD thesis.
 It was created based on the `scrbook` document class and by studying the wonderful [KOMA-Script](https://ctan.org/pkg/koma-script) documentation. My main goal was to:
 * achieve a visually-pleasing two-sided layout with a title page that adheres to the requirements of the [University of Kaiserslautern-Landau](https://en.wikipedia.org/wiki/University_of_Kaiserslautern-Landau),
